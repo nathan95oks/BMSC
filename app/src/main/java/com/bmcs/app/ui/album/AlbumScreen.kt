@@ -109,6 +109,7 @@ fun AlbumScreen(
 
 @Composable
 private fun AlbumHeader() {
+    val totalPoints by com.bmcs.app.ui.cards.LastPackState.totalPoints.collectAsState();
     Surface(
         color     = Color.White,
         shadowElevation = 2.dp
@@ -152,7 +153,7 @@ private fun AlbumHeader() {
                         modifier           = Modifier.size(16.dp)
                     )
                     Text(
-                        text       = "250 pts",
+                        text       = "$totalPoints pts",
                         color      = Color.White,
                         fontSize   = 12.sp,
                         fontWeight = FontWeight.Bold

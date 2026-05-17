@@ -240,12 +240,7 @@ private fun MultiplicadorBanner() {
 @Composable
 private fun SobresRecompensasSection() {
     Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = Color.White)) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text("Sobres de Recompensas", fontWeight = FontWeight.Bold)
-            Row(modifier = Modifier.fillMaxWidth().padding(top = 12.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
-                repeat(3) { Text("🎁", fontSize = 32.sp) }
-            }
-        }
+       
     }
 }
 

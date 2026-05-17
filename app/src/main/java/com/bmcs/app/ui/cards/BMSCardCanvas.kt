@@ -274,7 +274,7 @@ private fun DrawScope.drawBMSCard(
     )
     drawText(descLayout, topLeft = Offset(descPad, descT))
 
-    // ── 9. Bottom stat dividers ──────────────────────────────────────────────
+    // ── 9. Points earned row ─────────────────────────────────────────────────
     val divL = bp + w * 0.01f
     val divR = w - bp - w * 0.01f
     val line1 = h * 0.776f
@@ -283,19 +283,25 @@ private fun DrawScope.drawBMSCard(
     drawLine(Color(0xFF1A1A1A), Offset(divL, line1), Offset(divR, line1), 1.5f)
     drawLine(Color(0xFF1A1A1A), Offset(divL, line2), Offset(divR, line2), 1.5f)
 
-    val lblStyle = TextStyle(
-        fontSize = (w * 0.032f / density).sp,
-        fontWeight = FontWeight.Bold,
-        color = Color(0xFF1A1A1A)
-    )
     val midDiv = (line1 + line2) / 2f
-    val wkL = tm.measure("weakness", lblStyle)
-    val rsL = tm.measure("resistance", lblStyle)
-    val rtL = tm.measure("retreat cost", lblStyle)
 
-    drawText(wkL, topLeft = Offset(divL + w * 0.020f, midDiv - wkL.size.height / 2f))
-    drawText(rsL, topLeft = Offset(w / 2f - rsL.size.width / 2f, midDiv - rsL.size.height / 2f))
-    drawText(rtL, topLeft = Offset(divR - rtL.size.width - w * 0.020f, midDiv - rtL.size.height / 2f))
+    val ptsLabel = tm.measure(
+        text = "puntos base",
+        style = TextStyle(
+            fontSize = (w * 0.028f / density).sp,
+            color = Color(0xFF1A1A1A).copy(alpha = 0.65f)
+        )
+    )
+    val ptsValue = tm.measure(
+        text = "${card.points} pts",
+        style = TextStyle(
+            fontSize = (w * 0.036f / density).sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF1A1A1A)
+        )
+    )
+    drawText(ptsLabel, topLeft = Offset(divL + w * 0.020f, midDiv - ptsLabel.size.height / 2f))
+    drawText(ptsValue, topLeft = Offset(divR - ptsValue.size.width - w * 0.020f, midDiv - ptsValue.size.height / 2f))
 
     // ── 10. Leaf decorations ─────────────────────────────────────────────────
     val leafTop = line2 + h * 0.011f
