@@ -38,10 +38,9 @@ sealed class BottomNavItem(
         unselectedIcon = Icons.Outlined.Person
     )
 
-    // TEST — DELETE BEFORE RELEASE
     data object Test : BottomNavItem(
         route = "test_reveal",
-        label = "Test",
+        label = "Sobres",
         selectedIcon = Icons.Filled.AutoAwesome,
         unselectedIcon = Icons.Outlined.AutoAwesome
     )
