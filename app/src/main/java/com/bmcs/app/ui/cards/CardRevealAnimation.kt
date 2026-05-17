@@ -44,7 +44,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun CardRevealAnimation() {
+fun CardRevealAnimation(
+    onPackConsumed: (() -> Unit)? = null
+) {
     val scope = rememberCoroutineScope()
     val repository = remember { CardRepository() }
 
@@ -102,8 +104,12 @@ fun CardRevealAnimation() {
         }
 
         if (topIndex >= loadedCards.size) {
-            // All cards revealed — fetch a fresh pack from server
-            fetchKey++
+            // All cards revealed — go back to pack opening screen or re-fetch
+            if (onPackConsumed != null) {
+                onPackConsumed()
+            } else {
+                fetchKey++
+            }
             return
         }
 
