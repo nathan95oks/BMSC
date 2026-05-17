@@ -30,9 +30,14 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.drawable.toBitmap
-import coil.compose.AsyncImagePainter
-import coil.compose.rememberAsyncImagePainter
+import android.graphics.BitmapFactory
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 // Standard Pokemon-style card ratio (63mm × 88mm)
 private const val CARD_RATIO = 0.714f
@@ -43,12 +48,24 @@ fun BMSCard(
     modifier: Modifier = Modifier
 ) {
     val textMeasurer = rememberTextMeasurer()
+    val context = LocalContext.current
 
-    val imagePainter = cardData.imageUrl?.let { rememberAsyncImagePainter(model = it) }
-    val imageState = imagePainter?.state
-    val imageBitmap: ImageBitmap? = remember(imageState) {
-        (imageState as? AsyncImagePainter.State.Success)
-            ?.result?.drawable?.toBitmap()?.asImageBitmap()
+    // Stable random index (1-5) per card id — rerolled only when the card changes.
+    val localIndex = remember(cardData.id) { (1..5).random() }
+
+    // Decode the asset JPEG directly via AssetManager on a background thread.
+    // Coil's AsyncImagePainter only starts loading once it's actually drawn into
+    // a layout — since we just read its bitmap and never draw the painter itself,
+    // the load never fires. Decoding directly bypasses that entirely.
+    var imageBitmap by remember { mutableStateOf<ImageBitmap?>(null) }
+    LaunchedEffect(localIndex) {
+        imageBitmap = withContext(Dispatchers.IO) {
+            runCatching {
+                context.assets.open("test-images/$localIndex.jpeg").use { stream ->
+                    BitmapFactory.decodeStream(stream)?.asImageBitmap()
+                }
+            }.getOrNull()
+        }
     }
 
     Canvas(modifier = modifier.aspectRatio(CARD_RATIO)) {
