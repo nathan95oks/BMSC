@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.bmcs.app.ui.album.AlbumScreen
 import com.bmcs.app.ui.components.BottomNavBar
 import com.bmcs.app.ui.screens.ProfileScreen
 import com.bmcs.app.ui.screens.StoreScreen
@@ -43,7 +44,7 @@ fun AppNavigation() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(BottomNavItem.Album.route) {
-                ProfileScreen()
+                AlbumScreen()
             }
             composable(BottomNavItem.Tienda.route) {
                 StoreScreen()
