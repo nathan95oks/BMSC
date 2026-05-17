@@ -1,6 +1,7 @@
 package com.bmcs.app.ui.screens
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -30,10 +31,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bmcs.app.R
 import com.bmcs.app.ui.theme.*
 
 @Composable
@@ -97,21 +101,14 @@ private fun ProfileTopBar() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // Green circle logo
-                Box(
+                Image(
+                    painter = painterResource(id = R.drawable.logo_msc),
+                    contentDescription = "Logo MSC",
                     modifier = Modifier
-                        .size(28.dp)
-                        .clip(CircleShape)
-                        .background(MercantilGreen),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "M",
-                        color = TextWhite,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp
-                    )
-                }
+                        .size(36.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
+                )
                 Text(
                     text = "Mercantil Rewards",
                     fontWeight = FontWeight.SemiBold,
@@ -125,7 +122,7 @@ private fun ProfileTopBar() {
                 color = GoldBadge.copy(alpha = 0.15f)
             ) {
                 Text(
-                    text = "1,250 XP",
+                    text = "2,450 XP",
                     modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
                     color = XPBadgeGold,
                     fontWeight = FontWeight.Bold,
@@ -478,7 +475,7 @@ private fun PuntosDisponiblesCard() {
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "1,250 PTS",
+                text = "2,450 PTS",
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextWhite,

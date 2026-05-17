@@ -42,12 +42,7 @@ fun AppNavigation() {
             startDestination = BottomNavItem.Perfil.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(BottomNavItem.Inicio.route) {
-                // Placeholder - redirects to Profile for now
-                ProfileScreen()
-            }
             composable(BottomNavItem.Album.route) {
-                // Placeholder - redirects to Profile for now
                 ProfileScreen()
             }
             composable(BottomNavItem.Tienda.route) {
