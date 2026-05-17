@@ -33,3 +33,15 @@ data class SobreOut(
     val estado: String,          // "disponible" | "abierto"
     val figuras_cantidad: Int
 )
+
+// Matches ElegibilidadOut from server
+data class EligibilidadOut(
+    val usuario_id: Int,
+    val sobres_disponibles: Int,
+    val sobres_usados_mes: Int,
+    val max_sobres_mes: Int,
+    val saldo_promedio_mensual: Float,
+    val factor_permanencia: Float,
+    val factor_desgaste: Float,
+    val periodo: String
+)

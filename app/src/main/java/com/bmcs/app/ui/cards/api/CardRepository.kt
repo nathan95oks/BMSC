@@ -8,6 +8,12 @@ import kotlinx.coroutines.withContext
 class CardRepository(
     private val service: CardApiService = RetrofitClient.cardApiService
 ) {
+    // Returns full eligibility info — used by PackOpeningScreen to decide
+    // whether to enable pack opening (sobres_disponibles > 0).
+    suspend fun getEligibility(usuarioId: Int): EligibilidadOut = withContext(Dispatchers.IO) {
+        service.getEligibility(usuarioId)
+    }
+
     // Opens the first available sobre for the given user and returns its cards.
     // Throws if there are no sobres disponibles or the network call fails.
     suspend fun openNextSobre(usuarioId: Int): List<BMSCardData> = withContext(Dispatchers.IO) {

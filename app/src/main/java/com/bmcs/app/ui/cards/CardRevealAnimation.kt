@@ -11,6 +11,8 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -98,8 +100,14 @@ fun CardRevealAnimation(
         if (isLoading || isAnimating) return
 
         if (errorMsg != null) {
-            // Retry on tap when in error state
-            fetchKey++
+            // Tap to go back to PackOpeningScreen — it will re-check eligibility
+            // and show the proper "no sobres" state if the server now reports 0.
+            // This breaks any retry-loop on errors like "no hay sobres disponibles".
+            if (onPackConsumed != null) {
+                onPackConsumed()
+            } else {
+                fetchKey++
+            }
             return
         }
 
@@ -189,24 +197,59 @@ fun CardRevealAnimation(
 
             // ── Error ───────────────────────────────────────────────────────
             errorMsg != null -> {
+                // The raw server message ("No hay sobres disponibles para el
+                // usuario 1") is ugly — show a clean title instead and keep the
+                // raw detail in small muted text below for debugging.
+                val isNoSobres = errorMsg?.contains("sobres disponibles", ignoreCase = true) == true
+                val title = if (isNoSobres) "Ya no quedan sobres" else "No se pudo abrir el sobre"
+                val icon = if (isNoSobres) "📭" else "⚠"
+
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(32.dp)
                 ) {
-                    Text("⚠", fontSize = 48.sp)
-                    Spacer(Modifier.height(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .size(120.dp)
+                            .clip(CircleShape)
+                            .background(Color.White.copy(alpha = 0.08f)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(icon, fontSize = 60.sp)
+                    }
+                    Spacer(Modifier.height(24.dp))
                     Text(
-                        text = errorMsg ?: "",
+                        text = title,
                         color = Color.White,
-                        fontSize = 16.sp,
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center
                     )
-                    Spacer(Modifier.height(16.dp))
+                    Spacer(Modifier.height(10.dp))
                     Text(
-                        "Tap to retry",
-                        color = Color.White.copy(alpha = 0.50f),
-                        fontSize = 14.sp
+                        text = if (isNoSobres)
+                            "Vuelve a la pantalla anterior para ver tu progreso."
+                        else
+                            errorMsg.orEmpty(),
+                        color = Color.White.copy(alpha = 0.65f),
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
                     )
+                    Spacer(Modifier.height(28.dp))
+                    Box(
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .background(Color(0xFFFFD700).copy(alpha = 0.18f))
+                            .padding(horizontal = 24.dp, vertical = 10.dp)
+                    ) {
+                        Text(
+                            text = "Toca para volver",
+                            color = Color(0xFFFFD700),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    }
                 }
             }
 

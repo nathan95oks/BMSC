@@ -12,6 +12,11 @@ private const val BASE_URL = "http://10.0.2.2:8000/"
 
 interface CardApiService {
 
+    @GET("sobres/elegibilidad")
+    suspend fun getEligibility(
+        @Query("usuario_id") usuarioId: Int
+    ): EligibilidadOut
+
     @GET("sobres/")
     suspend fun getSobres(
         @Query("usuario_id") usuarioId: Int,

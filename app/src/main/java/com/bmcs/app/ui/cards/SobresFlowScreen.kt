@@ -5,7 +5,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 
 /**
  * Two-step "Sobres" experience:
@@ -16,7 +15,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
  */
 @Composable
 fun SobresFlowScreen() {
-    var showReveal by rememberSaveable { mutableStateOf(false) }
+    // Plain `remember` (not `rememberSaveable`) so this state does NOT survive
+    // tab navigation. Every time the user enters the Sobres tab they start at
+    // the pack-opening screen and have to tap "Abrir Sobre" to trigger the
+    // reveal animation — otherwise they'd land directly on a stack of cards.
+    var showReveal by remember { mutableStateOf(false) }
 
     AnimatedContent(
         targetState = showReveal,
