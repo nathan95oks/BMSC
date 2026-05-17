@@ -1,10 +1,14 @@
 package com.bmcs.app.ui.album
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.bmcs.app.ui.cards.LastPackState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 // ─── Estados de filtro ────────────────────────────────────────────────────────
 
@@ -56,6 +60,27 @@ class AlbumViewModel : ViewModel() {
 
     private val _uiState = MutableStateFlow(AlbumUiState())
     val uiState: StateFlow<AlbumUiState> = _uiState.asStateFlow()
+
+    init {
+        // Observe the last opened pack and mark matching cards as owned
+        viewModelScope.launch {
+            LastPackState.lastCards
+                .filterNot { it.isEmpty() }
+                .collect { newCards ->
+                    val newIds = newCards.mapNotNull { it.id.toIntOrNull() }.toSet()
+                    _uiState.update { state ->
+                        val updated = state.allCards.map { card ->
+                            if (card.id in newIds && !card.isOwned)
+                                card.copy(isOwned = true, isNew = true)
+                            else
+                                card
+                        }
+                        state.copy(allCards = updated)
+                    }
+                    applyFilters()
+                }
+        }
+    }
 
     // Cambia el filtro de rareza
     fun setRarityFilter(filter: RarityFilter) {

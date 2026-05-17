@@ -2,6 +2,7 @@ package com.bmcs.app.ui.screens
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bmcs.app.ui.cards.LastPackState
 import com.bmcs.app.ui.screens.api.ProfileRepository
 import com.bmcs.app.ui.screens.api.UsuarioPerfilOut
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,6 +15,7 @@ data class ProfileUiState(
     val perfil: UsuarioPerfilOut? = null,
     val sobresDisponibles: Int = 0,
     val notificacionesNoLeidas: Int = 0,
+    val puntosAcumulados: Int = 2450,
     val error: String? = null
 )
 
@@ -27,6 +29,11 @@ class ProfileViewModel(
 
     init {
         refresh()
+        viewModelScope.launch {
+            LastPackState.totalPoints.collect { pts ->
+                _uiState.value = _uiState.value.copy(puntosAcumulados = pts)
+            }
+        }
     }
 
     fun refresh() {
@@ -39,6 +46,7 @@ class ProfileViewModel(
                     perfil = snapshot.perfil,
                     sobresDisponibles = snapshot.sobresDisponibles,
                     notificacionesNoLeidas = snapshot.notificacionesNoLeidas,
+                    puntosAcumulados = _uiState.value.puntosAcumulados,
                     error = null
                 )
             } catch (t: Throwable) {

@@ -12,7 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.bmcs.app.ui.album.AlbumScreen
-import com.bmcs.app.ui.cards.CardRevealAnimation  // TEST — DELETE BEFORE RELEASE
+import com.bmcs.app.ui.cards.SobresFlowScreen
 import com.bmcs.app.ui.components.BottomNavBar
 import com.bmcs.app.ui.screens.ProfileScreen
 import com.bmcs.app.ui.screens.StoreScreen
@@ -55,7 +55,7 @@ fun AppNavigation() {
             }
             // TEST — DELETE BEFORE RELEASE
             composable(BottomNavItem.Test.route) {
-                CardRevealAnimation()
+                SobresFlowScreen()
             }
         }
     }

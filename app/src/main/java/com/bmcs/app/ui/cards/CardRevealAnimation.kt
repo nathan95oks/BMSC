@@ -44,7 +44,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun CardRevealAnimation() {
+fun CardRevealAnimation(
+    onPackConsumed: (() -> Unit)? = null
+) {
     val scope = rememberCoroutineScope()
     val repository = remember { CardRepository() }
 
@@ -76,7 +78,9 @@ fun CardRevealAnimation() {
         errorMsg = null
         try {
             // HERE ID=1
-            loadedCards = repository.openNextSobre(usuarioId = 1)
+            val cards = repository.openNextSobre(usuarioId = 1)
+            loadedCards = cards
+            LastPackState.update(cards)
         } catch (e: Exception) {
             errorMsg = e.message ?: "Error al cargar las cartas"
         }
@@ -102,8 +106,12 @@ fun CardRevealAnimation() {
         }
 
         if (topIndex >= loadedCards.size) {
-            // All cards revealed — fetch a fresh pack from server
-            fetchKey++
+            // All cards revealed — go back to pack opening screen or re-fetch
+            if (onPackConsumed != null) {
+                onPackConsumed()
+            } else {
+                fetchKey++
+            }
             return
         }
 

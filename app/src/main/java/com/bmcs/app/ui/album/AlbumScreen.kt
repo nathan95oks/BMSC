@@ -35,6 +35,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import com.bmcs.app.ui.cards.BMSCard
+import com.bmcs.app.ui.cards.toBMSCardData
 import com.bmcs.app.ui.theme.MercantilGreen
 
 // ─── Colores internos del álbum ───────────────────────────────────────────────
@@ -107,6 +109,7 @@ fun AlbumScreen(
 
 @Composable
 private fun AlbumHeader() {
+    val totalPoints by com.bmcs.app.ui.cards.LastPackState.totalPoints.collectAsState();
     Surface(
         color     = Color.White,
         shadowElevation = 2.dp
@@ -150,7 +153,7 @@ private fun AlbumHeader() {
                         modifier           = Modifier.size(16.dp)
                     )
                     Text(
-                        text       = "250 pts",
+                        text       = "$totalPoints pts",
                         color      = Color.White,
                         fontSize   = 12.sp,
                         fontWeight = FontWeight.Bold
@@ -400,120 +403,31 @@ private fun AlbumCardItem(
         return
     }
 
-    val borderBrush: Brush = when (card.rarity) {
-        CardRarity.LEGENDARY -> Brush.linearGradient(listOf(GoldStart, GoldEnd, GoldStart))
-        CardRarity.EPIC      -> Brush.linearGradient(listOf(SilverStart, SilverEnd, SilverStart))
-        CardRarity.COMMON    -> Brush.linearGradient(listOf(OutlineVar, OutlineVar))
-    }
+    Box(modifier = modifier) {
+        BMSCard(
+            cardData = card.toBMSCardData(),
+            modifier = Modifier.fillMaxWidth()
+        )
 
-    Box(
-        modifier = modifier
-            .aspectRatio(3f / 4f)
-            .clip(RoundedCornerShape(10.dp))
-            .border(
-                width  = if (card.rarity == CardRarity.LEGENDARY) 2.dp else 1.5.dp,
-                brush  = borderBrush,
-                shape  = RoundedCornerShape(10.dp)
-            )
-            .background(Color.White)
-    ) {
-        Column(
-            modifier              = Modifier
-                .fillMaxSize()
-                .padding(6.dp),
-            horizontalAlignment   = Alignment.CenterHorizontally,
-            verticalArrangement   = Arrangement.SpaceBetween
+        // "Nueva!" badge overlay
+        AnimatedVisibility(
+            visible  = card.isNew,
+            enter    = fadeIn(),
+            exit     = fadeOut(),
+            modifier = Modifier.align(Alignment.TopEnd).padding(4.dp)
         ) {
-            // Fila superior: rareza + badge "Nueva"
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment     = Alignment.CenterVertically
+            Surface(
+                color = Amber,
+                shape = CircleShape
             ) {
                 Text(
-                    text       = card.rarity.label.uppercase(),
-                    fontSize   = 8.sp,
+                    text       = "¡Nueva!",
+                    fontSize   = 7.sp,
                     fontWeight = FontWeight.Bold,
-                    color      = when (card.rarity) {
-                        CardRarity.LEGENDARY -> Color(0xFF994700)
-                        CardRarity.EPIC      -> GreenMid
-                        CardRarity.COMMON    -> Color(0xFF6E7A6E)
-                    },
-                    letterSpacing = 0.5.sp
-                )
-                AnimatedVisibility(
-                    visible = card.isNew,
-                    enter   = fadeIn(),
-                    exit    = fadeOut()
-                ) {
-                    Surface(
-                        color = Amber,
-                        shape = CircleShape
-                    ) {
-                        Text(
-                            text       = "¡Nueva!",
-                            fontSize   = 7.sp,
-                            fontWeight = FontWeight.Bold,
-                            color      = Color.White,
-                            modifier   = Modifier.padding(horizontal = 5.dp, vertical = 2.dp)
-                        )
-                    }
-                }
-            }
-
-            // Imagen de la carta
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .padding(vertical = 4.dp)
-                    .clip(RoundedCornerShape(6.dp))
-                    .border(0.5.dp, OutlineVar, RoundedCornerShape(6.dp))
-                    .background(SurfaceCard)
-            ) {
-                AsyncImage(
-                    model             = card.imageUrl,
-                    contentDescription = card.name,
-                    contentScale      = ContentScale.Crop,
-                    modifier          = Modifier.fillMaxSize()
+                    color      = Color.White,
+                    modifier   = Modifier.padding(horizontal = 5.dp, vertical = 2.dp)
                 )
             }
-
-            // Nombre y puntos
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier            = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    text       = card.name,
-                    fontSize   = 10.sp,
-                    fontWeight = FontWeight.Bold,
-                    color      = MercantilGreen,
-                    maxLines   = 1,
-                    overflow   = TextOverflow.Ellipsis,
-                    textAlign  = TextAlign.Center
-                )
-                Spacer(Modifier.height(3.dp))
-                Surface(
-                    color = card.rarity.badgeColor,
-                    shape = CircleShape
-                ) {
-                    Text(
-                        text       = "${card.rarity.points} pts",
-                        fontSize   = 8.sp,
-                        fontWeight = FontWeight.Bold,
-                        color      = card.rarity.textColor,
-                        modifier   = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
-                    )
-                }
-            }
-
-            // Número de carta
-            Text(
-                text     = "No. ${card.number}",
-                fontSize = 8.sp,
-                color    = Color(0xFF6E7A6E)
-            )
         }
     }
 }
