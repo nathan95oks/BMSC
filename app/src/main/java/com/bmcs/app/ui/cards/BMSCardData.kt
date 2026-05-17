@@ -17,49 +17,56 @@ enum class BMSRarity(
     val displayLabel: String,
     val cardColor: Color,
     val cardColorLight: Color,
-    val borderColor: Color
+    val borderColor: Color,
+    val points: Int
 ) {
     COMUN(
         serverKey = "comun",
         displayLabel = "Basic BMSCard",
         cardColor = Color(0xFF7EA850),
         cardColorLight = Color(0xFFBDD785),
-        borderColor = Color(0xFFFFD700)
+        borderColor = Color(0xFFFFD700),
+        points = 5
     ),
     RARA(
         serverKey = "rara",
         displayLabel = "Rara BMSCard",
         cardColor = Color(0xFF1565C0),
         cardColorLight = Color(0xFF64B5F6),
-        borderColor = Color(0xFF42A5F5)
+        borderColor = Color(0xFF42A5F5),
+        points = 7
     ),
     EPICA(
         serverKey = "epica",
         displayLabel = "Épica BMSCard",
         cardColor = Color(0xFF6A3FA0),
         cardColorLight = Color(0xFFAA82D4),
-        borderColor = Color(0xFFB8960C)
+        borderColor = Color(0xFFB8960C),
+        points = 8
     ),
     LEGENDARIA(
         serverKey = "legendaria",
         displayLabel = "Legendaria BMSCard",
         cardColor = Color(0xFFCC6B00),
         cardColorLight = Color(0xFFFFCC44),
-        borderColor = Color(0xFFFFD700)
+        borderColor = Color(0xFFFFD700),
+        points = 10
     ),
     ULTRA_RARA(
         serverKey = "ultra_rara",
         displayLabel = "Ultra Rara BMSCard",
         cardColor = Color(0xFFB71C1C),
         cardColorLight = Color(0xFFEF9A9A),
-        borderColor = Color(0xFFFF5252)
+        borderColor = Color(0xFFFF5252),
+        points = 15
     ),
     SUPREMA(
         serverKey = "suprema",
         displayLabel = "Suprema BMSCard",
         cardColor = Color(0xFF1A0A3C),
         cardColorLight = Color(0xFFCE93D8),
-        borderColor = Color(0xFFE0E0E0)
+        borderColor = Color(0xFFE0E0E0),
+        points = 25
     );
 
     companion object {

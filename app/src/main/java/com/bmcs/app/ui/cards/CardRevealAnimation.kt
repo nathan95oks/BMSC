@@ -78,7 +78,9 @@ fun CardRevealAnimation(
         errorMsg = null
         try {
             // HERE ID=1
-            loadedCards = repository.openNextSobre(usuarioId = 1)
+            val cards = repository.openNextSobre(usuarioId = 1)
+            loadedCards = cards
+            LastPackState.update(cards)
         } catch (e: Exception) {
             errorMsg = e.message ?: "Error al cargar las cartas"
         }
