@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-24:12
-INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-24:12
-INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-24:12
-INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-24:12
+ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:1-26:12
 MERGED from [androidx.navigation:navigation-common:2.8.5] /Users/nathanaelalba/.gradle/caches/8.9/transforms/bc91893a9f1958280adbcfdd25c92fd9/transformed/navigation-common-2.8.5/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.8.5] /Users/nathanaelalba/.gradle/caches/8.9/transforms/4ed8303874a629101fc7e72cd25cf3a4/transformed/navigation-runtime-2.8.5/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.8.5] /Users/nathanaelalba/.gradle/caches/8.9/transforms/ade3be20554b5856b612f38f97378c1f/transformed/navigation-common-ktx-2.8.5/AndroidManifest.xml:2:1-7:12
@@ -12,12 +12,14 @@ MERGED from [androidx.navigation:navigation-compose:2.8.5] /Users/nathanaelalba/
 MERGED from [androidx.activity:activity:1.9.3] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e8a71610abd1e38a7184ee5468421c04/transformed/activity-1.9.3/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity-ktx:1.9.3] /Users/nathanaelalba/.gradle/caches/8.9/transforms/0edd9fab6b822e0e9c3192b40635c088/transformed/activity-ktx-1.9.3/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material3:material3-android:1.3.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/b1d196674fcf86ebe35485f15500c334/transformed/material3-release/AndroidManifest.xml:17:1-22:12
+MERGED from [io.coil-kt:coil-compose:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/cf8cdae2d2fb5bcaff47bdd86797f081/transformed/coil-compose-2.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/9d4c890caeccf18d02b24bade6bd6770/transformed/coil-compose-base-2.6.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/725262025e1cc133389b7983e16c4140/transformed/material-release/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e68e364f87d2e020d82a0ba2953b80d8/transformed/material-ripple-release/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/c427987a2fbc288159350c110a5a755d/transformed/foundation-release/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e10eab88b122776107ac7f4bb92e58b3/transformed/foundation-layout-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e51e340dd4735305a888050baafbb66a/transformed/animation-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e68e364f87d2e020d82a0ba2953b80d8/transformed/material-ripple-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.animation:animation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/b08e7a7c45373d71478bb8dca92cea33/transformed/animation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e10eab88b122776107ac7f4bb92e58b3/transformed/foundation-layout-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/c427987a2fbc288159350c110a5a755d/transformed/foundation-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/564ca6c8dec3e1a1066abcee8e48a604/transformed/ui-tooling-data-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-unit-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/90116b84c0089d81329d35ae2fc212b6/transformed/ui-unit-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-geometry-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/657d728a0524f2518c06edc70c2069a0/transformed/ui-geometry-release/AndroidManifest.xml:2:1-7:12
@@ -28,6 +30,9 @@ MERGED from [androidx.compose.ui:ui-graphics-android:1.7.6] /Users/nathanaelalba
 MERGED from [androidx.compose.ui:ui-test-manifest:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/354494834154c94a9416df003ff1a94e/transformed/ui-test-manifest-1.7.6/AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/d4ab53c4d80d63d68ee160d2eeb8ddc0/transformed/ui-tooling-release/AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.activity:activity-compose:1.9.3] /Users/nathanaelalba/.gradle/caches/8.9/transforms/63248e1b84ede9c21cca8a4d4a986368/transformed/activity-compose-1.9.3/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/9f2fa37ae31b6b1c0e73093407ffe599/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:17:1-23:12
+MERGED from [io.coil-kt:coil:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/ea9d25c78a381457aeaece77bfaba300/transformed/coil-2.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-base:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/3db7f2c87a5756d196d16fb3555cac2e/transformed/coil-base-2.6.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/ca6874f2bdee4f1816786d9390c7cb72/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/5199a3f0647c175ea37b297db953d762/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e9a4de5f87829d8e56de87ff35dfed60/transformed/emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
@@ -45,6 +50,9 @@ MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /Users
 MERGED from [androidx.compose.ui:ui-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/123b61d37aa34158efe79f300ccd3bc3/transformed/ui-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.autofill:autofill:1.0.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/913b9b15812cc1c29eb7a275314f50a6/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/f20a1997074724b7156eff7f2a2bc541/transformed/graphics-path-1.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/7c93267a66424192207fb65a150aba82/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/0558b3afd50020ee8a806bf57c628a4f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/726e826bbc6f6f8f23e0b9070a470bb6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core:1.15.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/cd46abea9d16e862d0dfae7b2db85bca/transformed/core-1.15.0/AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/4ba721d16715c7e9b4ac0f245d22d41c/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.core:core-ktx:1.15.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/3919688e981ec9d735305c3d366204fc/transformed/core-ktx-1.15.0/AndroidManifest.xml:2:1-7:12
@@ -55,6 +63,7 @@ MERGED from [androidx.tracing:tracing:1.2.0] /Users/nathanaelalba/.gradle/caches
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/6d440091e6cd38d79f85b9967a866a9c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/151631d0c0ba295d6224dbb552340d01/transformed/runtime-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/77f4225cb469ff4bdd8c8a17eadae357/transformed/runtime-saveable-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/nathanaelalba/.gradle/caches/8.9/transforms/2a65cd4f9fda93934a7e7befa7195444/transformed/exifinterface-1.3.7/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/17c2f6b23cd913db5ea64278319b9c14/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e0e338b3f95b151fd3e8aa27f7091dc0/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:2:1-7:12
 	package
@@ -67,9 +76,13 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/nathanael
 		INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:5:5-22:19
-INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:5:5-22:19
+ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:7:5-24:19
+INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:7:5-24:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/354494834154c94a9416df003ff1a94e/transformed/ui-test-manifest-1.7.6/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/354494834154c94a9416df003ff1a94e/transformed/ui-test-manifest-1.7.6/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/d4ab53c4d80d63d68ee160d2eeb8ddc0/transformed/ui-tooling-release/AndroidManifest.xml:22:5-26:19
@@ -91,37 +104,37 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/nath
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.15.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/cd46abea9d16e862d0dfae7b2db85bca/transformed/core-1.15.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:12:9-35
 	android:label
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:10:9-41
 	android:roundIcon
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:9:9-54
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:11:9-54
 	tools:targetApi
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:12:9-29
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:14:9-29
 	android:icon
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:7:9-43
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:9:9-43
 	android:allowBackup
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:6:9-35
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:8:9-35
 	android:theme
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:11:9-45
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:13:9-45
 activity#com.bmcs.app.MainActivity
-ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:13:9-21:20
+ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:15:9-23:20
 	android:exported
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:15:13-36
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:17:13-36
 	android:theme
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:16:13-49
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:18:13-49
 	android:name
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:14:13-41
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:16:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:17:13-20:29
+ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:19:13-22:29
 action#android.intent.action.MAIN
-ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:18:17-69
+ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:18:25-66
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:19:17-77
+ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:19:27-74
+		ADDED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml:21:27-74
 uses-sdk
 INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/nathanaelalba/Desktop/BMCS/app/src/main/AndroidManifest.xml
@@ -142,18 +155,22 @@ MERGED from [androidx.activity:activity-ktx:1.9.3] /Users/nathanaelalba/.gradle/
 MERGED from [androidx.activity:activity-ktx:1.9.3] /Users/nathanaelalba/.gradle/caches/8.9/transforms/0edd9fab6b822e0e9c3192b40635c088/transformed/activity-ktx-1.9.3/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material3:material3-android:1.3.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/b1d196674fcf86ebe35485f15500c334/transformed/material3-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.compose.material3:material3-android:1.3.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/b1d196674fcf86ebe35485f15500c334/transformed/material3-release/AndroidManifest.xml:20:5-44
+MERGED from [io.coil-kt:coil-compose:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/cf8cdae2d2fb5bcaff47bdd86797f081/transformed/coil-compose-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/cf8cdae2d2fb5bcaff47bdd86797f081/transformed/coil-compose-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/9d4c890caeccf18d02b24bade6bd6770/transformed/coil-compose-base-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/9d4c890caeccf18d02b24bade6bd6770/transformed/coil-compose-base-2.6.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/725262025e1cc133389b7983e16c4140/transformed/material-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/725262025e1cc133389b7983e16c4140/transformed/material-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e68e364f87d2e020d82a0ba2953b80d8/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e68e364f87d2e020d82a0ba2953b80d8/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/c427987a2fbc288159350c110a5a755d/transformed/foundation-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/c427987a2fbc288159350c110a5a755d/transformed/foundation-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e10eab88b122776107ac7f4bb92e58b3/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e10eab88b122776107ac7f4bb92e58b3/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e51e340dd4735305a888050baafbb66a/transformed/animation-core-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e51e340dd4735305a888050baafbb66a/transformed/animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e68e364f87d2e020d82a0ba2953b80d8/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e68e364f87d2e020d82a0ba2953b80d8/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/b08e7a7c45373d71478bb8dca92cea33/transformed/animation-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/b08e7a7c45373d71478bb8dca92cea33/transformed/animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e10eab88b122776107ac7f4bb92e58b3/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e10eab88b122776107ac7f4bb92e58b3/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/c427987a2fbc288159350c110a5a755d/transformed/foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/c427987a2fbc288159350c110a5a755d/transformed/foundation-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/564ca6c8dec3e1a1066abcee8e48a604/transformed/ui-tooling-data-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/564ca6c8dec3e1a1066abcee8e48a604/transformed/ui-tooling-data-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-unit-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/90116b84c0089d81329d35ae2fc212b6/transformed/ui-unit-release/AndroidManifest.xml:5:5-44
@@ -174,6 +191,12 @@ MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /Users/nathanaelalba/
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/d4ab53c4d80d63d68ee160d2eeb8ddc0/transformed/ui-tooling-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity-compose:1.9.3] /Users/nathanaelalba/.gradle/caches/8.9/transforms/63248e1b84ede9c21cca8a4d4a986368/transformed/activity-compose-1.9.3/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-compose:1.9.3] /Users/nathanaelalba/.gradle/caches/8.9/transforms/63248e1b84ede9c21cca8a4d4a986368/transformed/activity-compose-1.9.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/9f2fa37ae31b6b1c0e73093407ffe599/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/9f2fa37ae31b6b1c0e73093407ffe599/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [io.coil-kt:coil:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/ea9d25c78a381457aeaece77bfaba300/transformed/coil-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/ea9d25c78a381457aeaece77bfaba300/transformed/coil-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/3db7f2c87a5756d196d16fb3555cac2e/transformed/coil-base-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.6.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/3db7f2c87a5756d196d16fb3555cac2e/transformed/coil-base-2.6.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/ca6874f2bdee4f1816786d9390c7cb72/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/ca6874f2bdee4f1816786d9390c7cb72/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/5199a3f0647c175ea37b297db953d762/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
@@ -208,6 +231,12 @@ MERGED from [androidx.autofill:autofill:1.0.0] /Users/nathanaelalba/.gradle/cach
 MERGED from [androidx.autofill:autofill:1.0.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/913b9b15812cc1c29eb7a275314f50a6/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/f20a1997074724b7156eff7f2a2bc541/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/f20a1997074724b7156eff7f2a2bc541/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/7c93267a66424192207fb65a150aba82/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/7c93267a66424192207fb65a150aba82/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/0558b3afd50020ee8a806bf57c628a4f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/0558b3afd50020ee8a806bf57c628a4f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/726e826bbc6f6f8f23e0b9070a470bb6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/726e826bbc6f6f8f23e0b9070a470bb6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.15.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/cd46abea9d16e862d0dfae7b2db85bca/transformed/core-1.15.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.15.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/cd46abea9d16e862d0dfae7b2db85bca/transformed/core-1.15.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/4ba721d16715c7e9b4ac0f245d22d41c/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
@@ -228,6 +257,8 @@ MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /Users/nathanaelalb
 MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/151631d0c0ba295d6224dbb552340d01/transformed/runtime-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/77f4225cb469ff4bdd8c8a17eadae357/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /Users/nathanaelalba/.gradle/caches/8.9/transforms/77f4225cb469ff4bdd8c8a17eadae357/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/nathanaelalba/.gradle/caches/8.9/transforms/2a65cd4f9fda93934a7e7befa7195444/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/nathanaelalba/.gradle/caches/8.9/transforms/2a65cd4f9fda93934a7e7befa7195444/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/17c2f6b23cd913db5ea64278319b9c14/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/nathanaelalba/.gradle/caches/8.9/transforms/17c2f6b23cd913db5ea64278319b9c14/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/nathanaelalba/.gradle/caches/8.9/transforms/e0e338b3f95b151fd3e8aa27f7091dc0/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44

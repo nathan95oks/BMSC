@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.bmcs.app-mergeDebugResources-52:/values-nb/values-nb.xml",
+            "outputFile": "com.bmcs.app-mergeDebugResources-54:/values-nb/values-nb.xml",
             "map": [
                 {
                     "source": "/Users/nathanaelalba/.gradle/caches/8.9/transforms/123b61d37aa34158efe79f300ccd3bc3/transformed/ui-release/res/values-nb/values-nb.xml",

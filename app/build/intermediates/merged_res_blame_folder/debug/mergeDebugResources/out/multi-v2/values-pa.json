@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.bmcs.app-mergeDebugResources-52:/values-pa/values-pa.xml",
+            "outputFile": "com.bmcs.app-mergeDebugResources-54:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "/Users/nathanaelalba/.gradle/caches/8.9/transforms/c427987a2fbc288159350c110a5a755d/transformed/foundation-release/res/values-pa/values-pa.xml",
