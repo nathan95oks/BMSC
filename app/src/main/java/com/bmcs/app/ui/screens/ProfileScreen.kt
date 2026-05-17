@@ -109,7 +109,7 @@ fun ProfileScreen(
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         AnimatedCardEntry(delayMs = 0) {
-                            PuntosAcumuladosCard(puntos = 2450)
+                            PuntosAcumuladosCard(puntos = state.puntosAcumulados)
                         }
 
                         AnimatedCardEntry(delayMs = 80) {

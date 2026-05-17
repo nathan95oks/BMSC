@@ -28,9 +28,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bmcs.app.R
 import com.bmcs.app.ui.theme.*
+import java.text.NumberFormat
+import java.util.Locale
 
 @Composable
 fun StoreScreen() {
+    val totalPoints by com.bmcs.app.ui.cards.LastPackState.totalPoints.collectAsState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,7 +45,7 @@ fun StoreScreen() {
                 .weight(1f)
                 .verticalScroll(rememberScrollState())
         ) {
-            StoreTopBar()
+            StoreTopBar(totalPoints = totalPoints)
             SearchBarSection()
 
             Column(
@@ -181,7 +185,8 @@ private fun borderSize(selected: Boolean) = androidx.compose.foundation.BorderSt
 )
 
 @Composable
-private fun StoreTopBar() {
+private fun StoreTopBar(totalPoints: Int) {
+    val formattedPoints = NumberFormat.getNumberInstance(Locale("es")).format(totalPoints)
     Surface(color = SurfaceWhite, shadowElevation = 1.dp) {
         Row(
             modifier = Modifier
@@ -201,7 +206,7 @@ private fun StoreTopBar() {
                 )
                 Text("Tienda MSC", fontWeight = FontWeight.Bold)
             }
-            Text("2,450 pts", color = Color(0xFFDAA520), fontWeight = FontWeight.Bold)
+            Text("$formattedPoints pts", color = Color(0xFFDAA520), fontWeight = FontWeight.Bold)
         }
     }
 }
@@ -235,12 +240,7 @@ private fun MultiplicadorBanner() {
 @Composable
 private fun SobresRecompensasSection() {
     Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = Color.White)) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text("Sobres de Recompensas", fontWeight = FontWeight.Bold)
-            Row(modifier = Modifier.fillMaxWidth().padding(top = 12.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
-                repeat(3) { Text("🎁", fontSize = 32.sp) }
-            }
-        }
+       
     }
 }
 

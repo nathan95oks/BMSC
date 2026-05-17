@@ -14,7 +14,7 @@ class CardRepository(
         val sobres = service.getSobres(usuarioId = usuarioId, soloDisponibles = true)
 
         val sobre = sobres.firstOrNull()
-            ?: throw NoSuchElementException("No hay sobres disponibles para el usuario $usuarioId")
+            ?: throw NoSuchElementException("No tiene sobres disponibles en este momento!")
 
         val result = service.abrirSobre(sobreId = sobre.id, usuarioId = usuarioId)
 
@@ -24,7 +24,8 @@ class CardRepository(
                 title = contenido.figura.nombre,
                 description = contenido.figura.descripcion ?: "",
                 rarity = BMSRarity.fromServerKey(contenido.rareza_obtenida),
-                imageUrl = contenido.figura.imagen_url
+                imageUrl = contenido.figura.imagen_url,
+                points = contenido.figura.puntos_base
             )
         }
     }
