@@ -12,11 +12,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -29,12 +27,19 @@ import com.bmcs.app.R
 import kotlinx.coroutines.delay
 
 /**
- * Full-screen "Open Pack" experience.
+ * Full-screen "Open Pack" experience — faithful port of the React TSX
+ * 3-D rotating pack.
  *
- * Shows a continuously-rotating 3-D pack card (front / back) with a golden
- * glow and a sweep-shine effect. When the user taps the **Abrir Sobre**
- * button the pack scales up and fades out, then [onOpenComplete] is called so
- * the host can navigate to the card-reveal screen.
+ * Both the front and back faces are rendered at all times; each face carries
+ * the **parent** rotation plus its own offset (0° for front, 180° for back).
+ * The face that is "looking away" is hidden via alpha = 0 based on the
+ * normalised rotation angle, replicating CSS `backface-visibility: hidden`
+ * without any jarring conditional swap.
+ *
+ * When the user taps **Abrir Sobre**, the rotation stops, the pack scales
+ * up + fades out (700 ms, matching the React `transition-all duration-700`),
+ * and then [onOpenComplete] is invoked so the host can transition to the
+ * card-reveal screen.
  */
 @Composable
 fun PackOpeningScreen(
@@ -42,10 +47,12 @@ fun PackOpeningScreen(
 ) {
     // ── State ──────────────────────────────────────────────────────────────
     var isOpening by remember { mutableStateOf(false) }
+    var isRotating by remember { mutableStateOf(true) }
 
     // ── Continuous Y-rotation (pack flip) ─────────────────────────────────
-    val infiniteTransition = rememberInfiniteTransition(label = "packRotation")
-    val rotationY by infiniteTransition.animateFloat(
+    // Matches the React `animate-rotate-y` keyframe.
+    val infiniteTransition = rememberInfiniteTransition(label = "packLoop")
+    val loopAngle by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 360f,
         animationSpec = infiniteRepeatable(
@@ -55,31 +62,37 @@ fun PackOpeningScreen(
         label = "rotationY"
     )
 
-    // ── Shine sweep ───────────────────────────────────────────────────────
-    val shineOffset by infiniteTransition.animateFloat(
-        initialValue = -0.5f,
+    // Freeze rotation when opening
+    val displayRotation = if (isRotating) loopAngle else 0f
+
+    // ── Shine sweep (diagonal bar, matches CSS animate-shine) ─────────────
+    // Translates from -150% to +150% on both axes, 3.5s,
+    // cubic-bezier(0.4, 0, 0.2, 1) = FastOutSlowInEasing.
+    val shineProgress by infiniteTransition.animateFloat(
+        initialValue = -1.5f,
         targetValue = 1.5f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 2000, easing = LinearEasing),
+            animation = tween(durationMillis = 2000, easing = FastOutSlowInEasing),
             repeatMode = RepeatMode.Restart
         ),
         label = "shine"
     )
 
-    // ── Glow pulse ────────────────────────────────────────────────────────
+    // ── Glow pulse (golden halo behind pack) ──────────────────────────────
     val glowAlpha by infiniteTransition.animateFloat(
-        initialValue = 0.25f,
+        initialValue = 0.20f,
         targetValue = 0.55f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1200, easing = FastOutSlowInEasing),
+            animation = tween(durationMillis = 1500, easing = FastOutSlowInEasing),
             repeatMode = RepeatMode.Reverse
         ),
         label = "glow"
     )
 
-    // ── Opening animation (scale-up + fade-out) ───────────────────────────
+    // ── Opening exit animation (scale-up 110 % + fade-out, 700 ms) ───────
+    // Mirrors the React `scale-110 opacity-0` with `transition-all duration-700`.
     val openScale by animateFloatAsState(
-        targetValue = if (isOpening) 1.25f else 1f,
+        targetValue = if (isOpening) 1.10f else 1f,
         animationSpec = tween(durationMillis = 700, easing = FastOutSlowInEasing),
         label = "openScale"
     )
@@ -89,10 +102,10 @@ fun PackOpeningScreen(
         label = "openAlpha"
     )
 
-    // Navigate to reveal screen after the exit animation completes
+    // Navigate to the reveal screen once the exit animation has finished
     LaunchedEffect(isOpening) {
         if (isOpening) {
-            delay(750)
+            delay(750L)
             onOpenComplete()
         }
     }
@@ -117,7 +130,7 @@ fun PackOpeningScreen(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxSize()
         ) {
-            // ── Header ─────────────────────────────────────────────────────
+            // ── Header (matches the React header) ──────────────────────────
             Text(
                 text = "Módulo Gamificado",
                 fontSize = 12.sp,
@@ -135,132 +148,88 @@ fun PackOpeningScreen(
             Spacer(modifier = Modifier.height(48.dp))
 
             // ── 3-D Pack Container ─────────────────────────────────────────
+            // Outer wrapper applies the opening scale + fade.
             Box(
                 modifier = Modifier
                     .scale(openScale)
                     .alpha(openAlpha),
                 contentAlignment = Alignment.Center
             ) {
-                // Glow effect behind pack
+                // Glow halo (behind the card, z = -1)
                 Box(
                     modifier = Modifier
-                        .size(width = 240.dp, height = 340.dp)
-                        .graphicsLayer {
-                            alpha = glowAlpha
-                        }
+                        .size(width = 260.dp, height = 400.dp)
+                        .graphicsLayer { alpha = glowAlpha }
                         .background(
                             brush = Brush.radialGradient(
                                 colors = listOf(
-                                    Color(0xFFD4AF37).copy(alpha = 0.6f),
+                                    Color(0xFFD4AF37).copy(alpha = 0.5f),
                                     Color.Transparent
                                 ),
-                                radius = 400f
+                                radius = 500f
                             ),
                             shape = RoundedCornerShape(16.dp)
                         )
                 )
 
-                // Pack card with 3-D rotation
+                // ── Card with perspective ──────────────────────────────────
+                // Both faces are ALWAYS rendered, stacked on top of each
+                // other. The one whose normalised rotation puts it "facing
+                // away" is hidden via alpha = 0, replicating CSS
+                // `backface-visibility: hidden` with `preserve-3d`.
+
                 Box(
                     modifier = Modifier
                         .width(220.dp)
                         .height(320.dp)
-                        .graphicsLayer {
-                            this.rotationY = if (isOpening) 0f else rotationY
-                            cameraDistance = 12f * density
-                            transformOrigin = androidx.compose.ui.graphics.TransformOrigin.Center
-                        }
                 ) {
-                    // Determine which face to show based on rotation angle
-                    val showFront = (rotationY % 360f) < 180f || isOpening
+                    // Helper: normalise any angle into 0..360
+                    val normFront = ((displayRotation % 360f) + 360f) % 360f
+                    val normBack  = (((displayRotation + 180f) % 360f) + 360f) % 360f
 
-                    if (showFront) {
-                        // Front of Pack
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clip(RoundedCornerShape(12.dp))
-                                .shadow(
-                                    elevation = 24.dp,
-                                    shape = RoundedCornerShape(12.dp)
-                                )
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.pack_front),
-                                contentDescription = "Sobre MSC Frente",
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop
-                            )
-                            // Shine sweep overlay
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .drawWithContent {
-                                        drawContent()
-                                        drawRect(
-                                            brush = Brush.linearGradient(
-                                                colors = listOf(
-                                                    Color.Transparent,
-                                                    Color.White.copy(alpha = 0.22f),
-                                                    Color.Transparent
-                                                ),
-                                                start = Offset(
-                                                    size.width * shineOffset,
-                                                    0f
-                                                ),
-                                                end = Offset(
-                                                    size.width * (shineOffset + 0.5f),
-                                                    size.height
-                                                )
-                                            )
-                                        )
-                                    }
-                            )
-                        }
-                    } else {
-                        // Back of Pack (mirrored so it reads correctly)
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clip(RoundedCornerShape(12.dp))
-                                .shadow(
-                                    elevation = 24.dp,
-                                    shape = RoundedCornerShape(12.dp)
-                                )
-                                .graphicsLayer { scaleX = -1f }
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.pack_back),
-                                contentDescription = "Sobre MSC Reverso",
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop
-                            )
-                            // Shine sweep overlay
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .drawWithContent {
-                                        drawContent()
-                                        drawRect(
-                                            brush = Brush.linearGradient(
-                                                colors = listOf(
-                                                    Color.Transparent,
-                                                    Color.White.copy(alpha = 0.22f),
-                                                    Color.Transparent
-                                                ),
-                                                start = Offset(
-                                                    size.width * shineOffset,
-                                                    0f
-                                                ),
-                                                end = Offset(
-                                                    size.width * (shineOffset + 0.5f),
-                                                    size.height
-                                                )
-                                            )
-                                        )
-                                    }
-                            )
-                        }
+                    val frontVisible = normFront < 90f || normFront > 270f
+                    val backVisible  = normBack  < 90f || normBack  > 270f
+
+                    // ── FRONT face ─────────────────────────────────────────
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .graphicsLayer {
+                                rotationY = displayRotation
+                                cameraDistance = 12f * density
+                                alpha = if (frontVisible) 1f else 0f
+                            }
+                            .clip(RoundedCornerShape(12.dp))
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.pack_front),
+                            contentDescription = "Sobre MSC Frente",
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop
+                        )
+                        // Shine sweep overlay
+                        ShineOverlay(shineProgress)
+                    }
+
+                    // ── BACK face ──────────────────────────────────────────
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .graphicsLayer {
+                                rotationY = displayRotation + 180f
+                                cameraDistance = 12f * density
+                                alpha = if (backVisible) 1f else 0f
+                            }
+                            .clip(RoundedCornerShape(12.dp))
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.pack_back),
+                            contentDescription = "Sobre MSC Reverso",
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop
+                        )
+                        // Shine sweep overlay
+                        ShineOverlay(shineProgress)
                     }
                 }
             }
@@ -269,7 +238,10 @@ fun PackOpeningScreen(
 
             // ── Open Button ────────────────────────────────────────────────
             Button(
-                onClick = { isOpening = true },
+                onClick = {
+                    isOpening = true
+                    isRotating = false
+                },
                 enabled = !isOpening,
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.buttonColors(
@@ -279,14 +251,7 @@ fun PackOpeningScreen(
                     disabledContentColor = Color(0xFF1a4d2e).copy(alpha = 0.5f)
                 ),
                 contentPadding = PaddingValues(horizontal = 48.dp, vertical = 16.dp),
-                modifier = Modifier
-                    .alpha(openAlpha)
-                    .shadow(
-                        elevation = 12.dp,
-                        shape = RoundedCornerShape(50),
-                        ambientColor = Color(0xFFFBBF24).copy(alpha = 0.5f),
-                        spotColor = Color(0xFFFBBF24).copy(alpha = 0.5f)
-                    )
+                modifier = Modifier.alpha(openAlpha)
             ) {
                 Text(
                     text = if (isOpening) "Abriendo..." else "✨ Abrir Sobre",
@@ -295,5 +260,49 @@ fun PackOpeningScreen(
                 )
             }
         }
+    }
+}
+
+/**
+ * Diagonal light-bar sweep that replicates the CSS:
+ *
+ * ```css
+ * .animate-shine {
+ *   width: 200%; height: 50px;
+ *   background: rgba(255,255,255,0.25);
+ *   filter: blur(10px);
+ *   transform: rotate(45deg);
+ *   animation: shine 3.5s cubic-bezier(0.4,0,0.2,1) infinite;
+ * }
+ * @keyframes shine {
+ *   0%   { translate(-150%, -150%) rotate(45deg) }
+ *   100% { translate( 150%,  150%) rotate(45deg) }
+ * }
+ * ```
+ *
+ * [progress] goes from -1.5 → 1.5 (matching -150 % → 150 %).
+ */
+@Composable
+private fun ShineOverlay(progress: Float) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .clip(RoundedCornerShape(12.dp)),   // keep shine inside card bounds
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            modifier = Modifier
+                // w-[200%] of 220dp card = 440dp, h-[50px] = 50dp
+                .width(440.dp)
+                .height(500.dp)
+                .graphicsLayer {
+                    // translateX/Y from -150 % to +150 % of the card size
+                    translationX = size.width * progress
+                    translationY = size.height * progress
+                    rotationZ = 45f
+                }
+                .blur(10.dp)
+                .background(Color.White.copy(alpha = 0.25f))
+        )
     }
 }
