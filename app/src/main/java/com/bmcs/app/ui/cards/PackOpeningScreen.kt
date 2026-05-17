@@ -155,15 +155,16 @@ fun PackOpeningScreen(
                     .alpha(openAlpha),
                 contentAlignment = Alignment.Center
             ) {
-                // Glow halo (behind the card, z = -1)
+                // Glow halo (behind the card) — bleeds to all sides
                 Box(
                     modifier = Modifier
-                        .size(width = 260.dp, height = 400.dp)
+                        .size(width = 460.dp, height = 440.dp)
                         .graphicsLayer { alpha = glowAlpha }
                         .background(
                             brush = Brush.radialGradient(
                                 colors = listOf(
-                                    Color(0xFFD4AF37).copy(alpha = 0.5f),
+                                    Color(0xFFD4AF37).copy(alpha = 0.55f),
+                                    Color(0xFFD4AF37).copy(alpha = 0.25f),
                                     Color.Transparent
                                 ),
                                 radius = 500f
