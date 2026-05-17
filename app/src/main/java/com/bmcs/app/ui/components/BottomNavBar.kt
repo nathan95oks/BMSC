@@ -29,7 +29,8 @@ fun BottomNavBar(
     val items = listOf(
         BottomNavItem.Album,
         BottomNavItem.Tienda,
-        BottomNavItem.Perfil
+        BottomNavItem.Perfil,
+        BottomNavItem.Test  // TEST — DELETE BEFORE RELEASE
     )
 
     NavigationBar(

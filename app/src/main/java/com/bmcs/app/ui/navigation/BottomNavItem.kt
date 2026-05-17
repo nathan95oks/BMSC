@@ -1,9 +1,11 @@
 package com.bmcs.app.ui.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.CollectionsBookmark
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Store
+import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material.icons.outlined.CollectionsBookmark
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Store
@@ -34,5 +36,13 @@ sealed class BottomNavItem(
         label = "Perfil",
         selectedIcon = Icons.Filled.Person,
         unselectedIcon = Icons.Outlined.Person
+    )
+
+    // TEST — DELETE BEFORE RELEASE
+    data object Test : BottomNavItem(
+        route = "test_reveal",
+        label = "Test",
+        selectedIcon = Icons.Filled.AutoAwesome,
+        unselectedIcon = Icons.Outlined.AutoAwesome
     )
 }
