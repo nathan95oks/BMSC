@@ -1,0 +1,23 @@
+# Archivos de compilación y temporales de Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/caches
+/.idea/deploymentTargetSelector.xml
+/.idea/assetWizardSettings.xml
+/.idea/modules.xml
+/.idea/navEditor.xml
+.idea/
+
+# Carpetas de construcción (Donde se genera el APK)
+/build
+/app/build
+captures/
+
+# Archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración local de Gradle que te causó el problema
+.gradle/config.properties
